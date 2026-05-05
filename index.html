@@ -49,6 +49,23 @@
             letter-spacing: 20px;
             color: #ffffff;
         }
+
+        /* Texto explicativo inferior */
+        #explanation-text {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Google Sans', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +73,10 @@
     <div id="title-container">
         <h1 id="dynamic-name">Grecia</h1>
         <p id="subtitle">Diseño Digital</p>
+    </div>
+
+    <div id="explanation-text">
+        Este script utiliza Three.js con un ShaderMaterial personalizado para renderizar un paisaje de ondas 3D mediante raymarching. Las transiciones de texto, que incluyen efectos de aberración cromática y zoom cinemático, son controladas por GSAP. La interfaz de lil-gui permite ajustar los parámetros visuales en tiempo real.
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
@@ -295,16 +316,16 @@
 
         // Fase 1: Efecto Glitch al aparecer (aberración cromática y distorsión rápida)
         tl.fromTo(nameEl,
-            { scale: 0.8, opacity: 0, skewX: 0, textShadow: "0px 0px 0px rgba(255,0,0,0), 0px 0px 0px rgba(0,255,255,0)" },
-            { scale: 0.82, opacity: 0.8, skewX: 5, textShadow: "-3px 0px 0px rgba(255,0,0,0.7), 3px 0px 0px rgba(0,255,255,0.7)", duration: 0.04 }
+            { scale: 0.2, opacity: 0, skewX: 0, textShadow: "0px 0px 0px rgba(255,0,0,0), 0px 0px 0px rgba(0,255,255,0)" },
+            { scale: 0.25, opacity: 0.8, skewX: 15, textShadow: "-10px 0px 0px rgba(255,0,0,0.8), 10px 0px 0px rgba(0,255,255,0.8)", duration: 0.04 }
         ).to(nameEl,
-            { scale: 0.84, opacity: 0.3, skewX: -5, textShadow: "3px 0px 0px rgba(255,0,0,0.7), -3px 0px 0px rgba(0,255,255,0.7)", duration: 0.04 }
+            { scale: 0.3, opacity: 0.3, skewX: -15, textShadow: "10px 0px 0px rgba(255,0,0,0.8), -10px 0px 0px rgba(0,255,255,0.8)", duration: 0.04 }
         ).to(nameEl,
-            { scale: 0.86, opacity: 0.9, skewX: 2, textShadow: "-1px 0px 0px rgba(255,0,0,0.4), 1px 0px 0px rgba(0,255,255,0.4)", duration: 0.04 }
+            { scale: 0.35, opacity: 0.9, skewX: 5, textShadow: "-5px 0px 0px rgba(255,0,0,0.6), 5px 0px 0px rgba(0,255,255,0.6)", duration: 0.04 }
         ).to(nameEl,
             { scale: 1, opacity: 1, skewX: 0, textShadow: "0px 0px 0px rgba(255,0,0,0), 0px 0px 0px rgba(0,255,255,0)", duration: 1.38, ease: 'power2.out' } // Estabilización
         ).to(nameEl, 
-            { scale: 1.2, opacity: 0, duration: 2.5, ease: 'power2.in', delay: 1 } // Phase 2: After a delay, zoom in further and fade out
+            { scale: 1.5, opacity: 0, duration: 2.5, ease: 'power2.in', delay: 1 } // Phase 2: After a delay, zoom in further and fade out
         );
 
         // Start the animation loop
