@@ -324,8 +324,14 @@
             { scale: 0.35, opacity: 0.9, skewX: 5, textShadow: "-5px 0px 0px rgba(255,0,0,0.6), 5px 0px 0px rgba(0,255,255,0.6)", duration: 0.04 }
         ).to(nameEl,
             { scale: 1, opacity: 1, skewX: 0, textShadow: "0px 0px 0px rgba(255,0,0,0), 0px 0px 0px rgba(0,255,255,0)", duration: 1.38, ease: 'power2.out' } // Estabilización
-        ).to(nameEl, 
-            { scale: 1.5, opacity: 0, duration: 2.5, ease: 'power2.in', delay: 1 } // Phase 2: After a delay, zoom in further and fade out
+        ).to(nameEl,
+            { scale: 1.4, opacity: 0.5, duration: 2.38, ease: 'power2.in', delay: 1 } // Fase 2: Inicio de salida progresiva
+        ).to(nameEl,
+            { scale: 1.45, opacity: 0.8, skewX: -15, textShadow: "-10px 0px 0px rgba(255,0,0,0.8), 10px 0px 0px rgba(0,255,255,0.8)", duration: 0.04 } // Glitch salida 1
+        ).to(nameEl,
+            { scale: 1.48, opacity: 0.3, skewX: 15, textShadow: "10px 0px 0px rgba(255,0,0,0.8), -10px 0px 0px rgba(0,255,255,0.8)", duration: 0.04 } // Glitch salida 2
+        ).to(nameEl,
+            { scale: 1.5, opacity: 0, skewX: 0, textShadow: "0px 0px 0px rgba(255,0,0,0), 0px 0px 0px rgba(0,255,255,0)", duration: 0.04 } // Desaparición final
         );
 
         // Start the animation loop
